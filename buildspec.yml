@@ -1,0 +1,8 @@
+version: 0.0
+phases:
+  build:
+    commands:
+      - pip install flask gunicorn
+artifacts:
+  files:
+    - "**/*"

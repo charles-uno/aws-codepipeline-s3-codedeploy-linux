@@ -1,17 +1,16 @@
+
 version: 0.0
 os: linux
 files:
-  - source: /app.py
-    destination: /var/www/html/
+  - source: ./hello.py
+    destination: /home/ec2-home/hello/
+  - source: ./etc/init/mu-minimal-ec2.conf
+    destination: /etc/init/
+
 hooks:
-  BeforeInstall:
-    - location: scripts/install_dependencies
-      timeout: 300
-      runas: root
-    - location: scripts/start_server
-      timeout: 300
-      runas: root
   ApplicationStop:
     - location: scripts/stop_server
-      timeout: 300
-      runas: root
+      timeout: 30
+  ApplicationStart:
+    - location: scripts/start_server
+      timeout: 30
